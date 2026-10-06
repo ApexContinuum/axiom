@@ -1,0 +1,8 @@
+'use strict';
+const menu=document.querySelector('.menu'),nav=document.querySelector('nav');
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus();}});
+for(const a of document.querySelectorAll('nav a')){if(a.pathname===location.pathname)a.setAttribute('aria-current','page');}
+const form=document.querySelector('#inquiry');
+if(form){const service=new URLSearchParams(location.search).get('service');if(service&&Array.from(form.elements.service.options).some(o=>o.value===service))form.elements.service.value=service;
+form.addEventListener('submit',e=>{e.preventDefault();const status=document.querySelector('#form-status');if(!form.reportValidity()){status.textContent='Please complete the required fields and enter a valid email.';return;}const data=new FormData(form);if(data.get('website'))return;const text=['Axiom Technologies — Project inquiry','',...['name','email','company','service','description','timeline'].map(k=>k.toUpperCase()+': '+(data.get(k)||'Not provided')),'','This inquiry was prepared locally. It has not been sent.'].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/plain'}));const a=document.createElement('a');a.href=url;a.download='axiom-project-inquiry.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Your inquiry file is ready. It has not been sent. Online delivery is awaiting configuration.';});}
