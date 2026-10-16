@@ -1,6 +1,6 @@
 # Axiom Technologies
 
-A buildless, responsive marketing website with 16 real routes. Content is maintained in generate.py; run python generate.py after edits. Styling and interactions live in dist/style.css and dist/app.js.
+A buildless, responsive marketing website with 16 real routes. Content is maintained in generate.py; run python generate.py after edits. Styling and interactions live in style.css and app.js.
 
 ## Contact setup
 The current inquiry form validates inputs and downloads a local text file. It never submits or claims delivery. Before inviting customer inquiries, configure a real destination: implement a server endpoint or a reputable form service, add server-side validation, length limits, rate limiting and spam controls, and update the form to await a successful response before showing a sent state. The owner supplied Aamer Javaid Rana as the contact at +1 646 591 7891. Primary contact links use tel:+16465917891. Add a business email and optional scheduling URL only after they are supplied. No personal data is persisted by the current form.
