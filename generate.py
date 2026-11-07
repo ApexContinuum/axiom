@@ -1,7 +1,8 @@
 from pathlib import Path
 import json,html
 root=Path(__file__).parent; out=root
-origin='https://axiom-technologies.abdullahabbasi98.chatgpt.site'
+origin='https://apexcontinuum.github.io/axiom'
+base_path='/axiom'
 contact_email='atllc001@outlook.com'
 contact_phone='+1 646 591 7891'
 street_address='1401 21ST ST STE R'
@@ -54,6 +55,7 @@ pages['contact']=('Contact us',intro('Contact us','Let’s start<br>a conversati
 for route,(title,body) in pages.items():
  folder=out/route;folder.mkdir(parents=True,exist_ok=True);url=origin+'/'+(route+'/' if route else '')
  doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' | Axiom Technologies</title><meta name="description" content="'+html.escape('Axiom Technologies: '+title+'. Technology consulting, project delivery, and ongoing engineering support.')+'"><meta property="og:title" content="'+html.escape(title+' | Axiom Technologies')+'"><meta property="og:description" content="Engineering ideas into business impact."><meta property="og:type" content="website"><meta property="og:url" content="'+url+'"><meta property="og:image" content="'+origin+'/social.svg"><link rel="canonical" href="'+url+'"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script><script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@type':'Organization','name':'Axiom Technologies','url':origin,'email':contact_email,'address':{'@type':'PostalAddress','streetAddress':street_address,'addressLocality':'Sacramento','addressRegion':'CA','postalCode':'95811','addressCountry':'US'}})+'</script></head><body><a class="skip" href="#main">Skip to content</a><header class="wrap">'+nav+'</header><main id="main">'+body+'</main>'+footer+'</body></html>'
+ doc=doc.replace('href="/',f'href="{base_path}/').replace('src="/',f'src="{base_path}/')
  (folder/'index.html').write_text(doc)
 (out/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+origin+'/'+(p+'/' if p else '')+'</loc></url>' for p in pages)+'</urlset>')
 (out/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+origin+'/sitemap.xml\n')

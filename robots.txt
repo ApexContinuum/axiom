@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://axiom-technologies.abdullahabbasi98.chatgpt.site/sitemap.xml
+Sitemap: https://apexcontinuum.github.io/axiom/sitemap.xml
