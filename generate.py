@@ -3,7 +3,7 @@ import json,html
 root=Path(__file__).parent; out=root
 origin='https://apexcontinuum.github.io/axiom'
 base_path='/axiom'
-contact_email='atllc001@outlook.com'
+contact_email='hello@axiomtechnologies.io'
 contact_phone='+1 646 591 7891'
 street_address='1401 21ST ST STE R'
 locality='SACRAMENTO, CA 95811'
